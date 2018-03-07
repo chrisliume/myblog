@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .HeartAnimation {
+      background: url(heart.png) left center no-repeat;
+      height: 100px;
+      width: 100px;
+      cursor: pointer;
+    }
+
+    .like-active {
+      /* ease，linear、cubic-bezier 为补间动画， steps为关键帧动画 */
+      animation-timing-function: steps(28);
+      animation-name: heart-burst;
+      animation-duration: .8s;
+      animation-iteration-count: 1;
+      display: inline-block;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes heart-burst {
+      0% {
+        background-position: left
+      }
+      100% {
+        background-position: right
+      }
+    }
+    .rotate-box {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    .rotate-box:hover {
+        transform: rotate(666turn);
+        transition-delay: 0s;
+        transition-property: all;
+        transition-duration: 59s;
+        transition-timing-function: cubic-bezier(.34, 0, .84, 1)
+      }
+  </style>
+  <link rel="stylesheet" href="./support.css">
+</head>
+
+<body>
+  <!-- 点赞 -->
+  <div class="HeartAnimation"></div>
+
+  <div class="rotate-box">
+    <img src="https://wx2.sinaimg.cn/orj360/006cTMtLgy1fp414xafn9j30ku0muwfs.jpg" alt="头像">
+  </div>
+
+  <script src="http://zhcdn01.xoyo.com/xassets/lib/jquery/1.7.2/jquery.js"></script>
+  <script>
+    // 点赞
+    $('.HeartAnimation').click(function () {
+      var _this = $(this)
+      _this.hasClass('like-active') ? _this.removeClass('like-active') : _this.addClass('like-active')
+    });
+  </script>
+</body>
+
+</html>
